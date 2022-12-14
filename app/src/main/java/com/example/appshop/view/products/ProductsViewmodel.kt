@@ -18,17 +18,18 @@ private val api : ApiService
 
     var products : MutableState<List<Product>> = mutableStateOf( emptyList() )
 
+    var categories: MutableState<List<String>> = mutableStateOf(emptyList())
+
 
     init {
         getProducts()
-        Log.i("MyVM", "MYVM entered")
     }
 
-    fun getProducts(){
+    private fun getProducts(){
         viewModelScope.launch{
             products.value = api.getProducts()
+            categories.value = api.getCategories()
 
-            Log.i("MyProducts", products.toString())
         }
     }
 }
