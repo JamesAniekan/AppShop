@@ -20,6 +20,8 @@ private val api : ApiService
 
     var categories: MutableState<List<String>> = mutableStateOf(emptyList())
 
+    var clickCount: MutableState<Int> = mutableStateOf(0)
+
 
     init {
         getProducts()
@@ -31,5 +33,8 @@ private val api : ApiService
             categories.value = api.getCategories()
 
         }
+    }
+    fun incrementCC(){
+        clickCount.value += 1
     }
 }
